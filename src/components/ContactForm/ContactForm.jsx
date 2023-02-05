@@ -31,16 +31,24 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
   };
-  const handleClick = e => {
-    if (!contacts) {
-      return null;
+  const handleClick = () => {
+    if (!name) {
+      return alert('The field Name is empty, write Name');
     }
-    // const newName = name;
-    // const proofName = Object.values(contacts).map(contact => contact.name);
-    // if (proofName.includes(newName)) {
-    //   reset();
-    //   return alert(`${newName} is already in contacts.`);
-    // }
+    if (!phone) {
+      return alert('The field Phone is empty, write Phone');
+    }
+    if (phone.length < 3 || phone.length > 24) {
+      return alert(`${phone.length}`);
+    }
+    const newName = name.trim();
+    const proofName = Object.values(contacts.items).map(
+      contact => contact.name
+    );
+    if (proofName.includes(newName)) {
+      reset();
+      return alert(`${newName} is already in contacts.`);
+    }
 
     const newContact = { name: name, phone: phone };
     dispatch(addContacts(newContact));

@@ -22,7 +22,7 @@ const ContactList = () => {
 
   return (
     <>
-      {visibleContacts && (
+      {contacts && (
         <List>
           {visibleContacts.map(contact => (
             <ContactItem key={contact.id}>
