@@ -19,10 +19,9 @@ const ContactList = () => {
     dispatch(deleteContacts(id));
   };
   const visibleContacts = getVisibleContacts();
-
   return (
     <>
-      {contacts && (
+      {contacts.items.length > 0 && (
         <List>
           {visibleContacts.map(contact => (
             <ContactItem key={contact.id}>

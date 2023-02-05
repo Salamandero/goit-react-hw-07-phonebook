@@ -32,14 +32,16 @@ const ContactForm = () => {
     e.preventDefault();
   };
   const handleClick = () => {
-    if (!name) {
+    if (!name.trim()) {
       return alert('The field Name is empty, write Name');
     }
-    if (!phone) {
+    if (!phone.trim()) {
       return alert('The field Phone is empty, write Phone');
     }
     if (phone.length < 3 || phone.length > 24) {
-      return alert(`${phone.length}`);
+      return alert(
+        `You wrote ${phone.length} symbols, but need from 3 to 24   `
+      );
     }
     const newName = name.trim();
     const proofName = Object.values(contacts.items).map(
